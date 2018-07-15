@@ -12,22 +12,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
         register_button_register.setOnClickListener {
 
             val email = email_edit_text_register.text.toString()
             val password = password_edit_text_register.text.toString()
-
 
             Log.d( "MainActivity", "email is " + email)
             Log.d( "MainActivity", "password is  $password")
 
             //Firebase authentication with email, username, and password
 
-
         }
-
 
         already_have_account_text_view.setOnClickListener {
             Log.d("MainActivity", "try to show login activity")
