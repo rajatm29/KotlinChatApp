@@ -14,13 +14,7 @@ class MainActivity : AppCompatActivity() {
 
         register_button_register.setOnClickListener {
 
-            val email = email_edit_text_register.text.toString()
-            val password = password_edit_text_register.text.toString()
-
-            Log.d( "MainActivity", "email is " + email)
-            Log.d( "MainActivity", "password is  $password")
-
-            //Firebase authentication with email, username, and password
+            performRegister()
 
         }
 
@@ -34,4 +28,37 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+    
+    
+    private fun performRegister() {
+        
+        val email = email_edit_text_register.text.toString()
+        val password = password_edit_text_register.text.toString()
+
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText( this, "Please enter text in email/pw", Toast.LENGTH_SHORT).show()
+            return
+
+        }
+
+        Log.d( "MainActivity", "email is " + email)
+        Log.d( "MainActivity", "password is  $password")
+
+        //Firebase authentication with email, username, and password
+
+        FirebaseAuth.getInstance().createUsereWithEmailAndPassword(email, password)
+            .addCompleteListener { 
+                if(!it.isSuccessful) return@addOnCompleteListener
+
+                //else if successful 
+
+                Log.d( "Main", "createdUser with uid: ${it.result.user.uid}")
+
+            }
+            .addOnFailureListener {
+                Log.d( "Main", "Failed to create User: ${it.message}")
+            }
+
+    }
+
 }
