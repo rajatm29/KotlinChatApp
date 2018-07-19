@@ -8,6 +8,22 @@ import android.support.v7.app.AppCompatActivity
  */
 
 class LoginActivity: AppCompatActivity() {
+    
+    super.onCreate(savedInstanceState)
+    
+    setContentView(R.layout.activity_login)
+    
+    login_button_login.setOnClickListener {
+        val email = email_edittext_login.text.toString()
+        val password = password_edittext_login.text.toString()
+        
+        Log.d ( "Login", "Attempt to login with email & pw: $email")
+        
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+            //.addOnCompleteListener()
+            
+        
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
