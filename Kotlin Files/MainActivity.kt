@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                 .addOnCompleteListener {
                     if(!it.isSuccessful) return@addOnCompleteListener
 
-                    //else if successful 
+                    //else if successful
 
                     Log.d( "Main", "createdUser with uid: ${it.result.user.uid}")
 
