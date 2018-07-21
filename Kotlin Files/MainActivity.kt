@@ -4,6 +4,8 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -28,10 +30,10 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-    
-    
+
+
     private fun performRegister() {
-        
+
         val email = email_edit_text_register.text.toString()
         val password = password_edit_text_register.text.toString()
 
@@ -46,19 +48,19 @@ class MainActivity : AppCompatActivity() {
 
         //Firebase authentication with email, username, and password
 
-        FirebaseAuth.getInstance().createUsereWithEmailAndPassword(email, password)
-            .addCompleteListener { 
-                if(!it.isSuccessful) return@addOnCompleteListener
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener {
+                    if(!it.isSuccessful) return@addOnCompleteListener
 
-                //else if successful 
+                    //else if successful 
 
-                Log.d( "Main", "createdUser with uid: ${it.result.user.uid}")
+                    Log.d( "Main", "createdUser with uid: ${it.result.user.uid}")
 
-            }
-            .addOnFailureListener {
-                Log.d( "Main", "Failed to create User: ${it.message}")
-                Toast.makeText( this, "Please enter text in email/pw", Toast.LENGTH_SHORT).show()
-            }
+                }
+                .addOnFailureListener {
+                    Log.d( "Main", "Failed to create User: ${it.message}")
+                    Toast.makeText( this, "Please enter text in email/pw", Toast.LENGTH_SHORT).show()
+                }
 
     }
 
