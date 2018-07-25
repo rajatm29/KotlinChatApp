@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import com.example.rajatmonga.kotlinchatapp.R.id.login_button_login
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activitiy_login.*
 
@@ -29,14 +30,9 @@ class LoginActivity: AppCompatActivity() {
 
         }
 
-
-        
     }
-
-
 
     override fun setContentView(view: View?) {
         super.setContentView(R.layout.activitiy_login)
     }
 }
-
