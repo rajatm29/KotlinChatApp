@@ -26,8 +26,6 @@ class LoginActivity: AppCompatActivity() {
 
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
             //.addOnCompleteListener()
-
-
         }
 
     }
