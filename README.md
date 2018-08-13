@@ -1,3 +1,4 @@
 # KotlinChatApp
 
-Using Firebase for Auth and Users
+## Using Firebase for Auth and Users
+
